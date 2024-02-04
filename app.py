@@ -1,10 +1,12 @@
-from flask import Flask
+from flask import Flask, request , jsonify
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/api', methods = ['GET'])
 def index():
-    return "Hello World"
+    d={}
+    d['Querry'] = str(request.args['Querry'])
+    return jsonify(d)
 
 
 if __name__ == "__main__":
